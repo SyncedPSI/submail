@@ -2,7 +2,7 @@ module Submail
   class MessageXSend
     include Helper
 
-    def initialize(config)
+    def initialize(config = Submail::configuration.message_json)
       @to = []
       @addressbook = []
       @project = ""
@@ -47,7 +47,7 @@ module Submail
       request = self.build_request
       url = "https://api.submail.cn/message/xsend.json"
       request["appid"] = @config["appid"]
-      request["timestamp"] = get_timestamp()
+      request["timestamp"] = get_timestamp
       request["signature"] = create_signatrue(request, @config)
       JSON.parse http_post(url, request)
     end
