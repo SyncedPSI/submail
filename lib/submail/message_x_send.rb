@@ -26,6 +26,10 @@ module Submail
       @vars[key] = value
     end
     
+    def add_vars(vars)
+      @vars.merge(vars)
+    end
+    
     def build_request
       request = {}
       if @to.length != 0
