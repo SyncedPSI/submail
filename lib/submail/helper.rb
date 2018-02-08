@@ -2,13 +2,13 @@ module Submail
   module Helper
     def http_get(url)
       uri = URI.parse(url)
-      request = Net::HTTP::Get.new(uri.to_s)
+      request = Net::HTTP::Get.new(uri)
       http_request(uri, request)
     end
 
     def http_post(url, postdata)
       uri = URI.parse(url)
-      request = Net::HTTP::Post.new(uri.to_s)
+      request = Net::HTTP::Post.new(uri)
       request.set_form_data postdata
       http_request(uri, request)
     end
